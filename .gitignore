@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# secrets — NEVER commit
+.memwal/
+*credentials*.json
+*.key
+.env
+.env.*
+
+# runtime state (local proof ledger + entity registry)
+.continuity/
+**/blobs.log
+
+# internal strategy / competitive analysis — keep OUT of the public repo
+docs/specs/
+docs/strategy/
+
+# os
+.DS_Store

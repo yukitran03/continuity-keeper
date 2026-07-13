@@ -1,0 +1,31 @@
+{
+  "name": "continuity-keeper",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A self-enforcing, portable, wallet-owned story bible on Walrus Memory that keeps AI co-writers consistent with canon.",
+  "bin": {
+    "continuity": "./tools/continuity/cli.mjs"
+  },
+  "scripts": {
+    "continuity": "node tools/continuity/cli.mjs",
+    "test": "node tools/continuity/test/harness.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "walrus",
+    "walrus-memory",
+    "memwal",
+    "sui",
+    "seal",
+    "agent-memory",
+    "story-bible",
+    "fiction",
+    "continuity"
+  ],
+  "dependencies": {
+    "@mysten-incubation/memwal": "^0.0.7"
+  },
+  "license": "MIT"
+}

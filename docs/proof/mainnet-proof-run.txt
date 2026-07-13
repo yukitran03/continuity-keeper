@@ -1,0 +1,74 @@
+### 1. Establish canon (real mainnet writes) ###
+✓ wrote 3 fact(s) → saltglass::char::elara
+✓ wrote 2 fact(s) → saltglass::char::kane
+✓ wrote 1 fact(s) → saltglass::char::mother-vess
+✓ wrote 1 fact(s) → saltglass::place::ravengard
+✓ wrote 1 fact(s) → saltglass::place::the-fold
+✓ wrote 1 fact(s) → saltglass::object::the-sunblade
+✓ wrote 1 fact(s) → saltglass::object::elaras-pendant
+✓ wrote 1 fact(s) → saltglass::rule::cost-of-the-fold
+✓ wrote 3 fact(s) → saltglass::events
+✓ wrote 1 fact(s) → saltglass::timeline
+
+### 2. Recall Elara BEFORE Ch.7 (canon says: alive) ###
+recall ns=saltglass::char::elara q="Is Elara alive or dead?" → 3 hit(s)
+  [0.415] [canon:char] Elara — alive; younger sister of Kane the harbor-warden (as of: Ch.1)   (lU97Xfm5sdW5xvfC1CLXjJd06jRQGC1eQUaf5AGsxiM)
+  [0.469] [canon:char] Elara — a memory-diver of Ravengard who recovers lost memories from the drowned city (as of: Ch.1)   (In0Y30IAwy24_RZQszekz_MC3rNm5bbf7_BizCgVrrE)
+  [0.519] [canon:char] Elara — grey eyes; wears a saltglass pendant holding her mother's last memory (as of: Ch.1)   (YK1eSgxMRgkFAL27j3glq4xJm2g0coH_IUVMFRoEC0Y)
+
+### 3. Ch.7 — Elara dies at the Fold. SUPERSEDE (forget the namespace + rewrite current facts) ###
+↻ superseded char "Elara": retired 3 old fact(s), wrote 2 current fact(s)
+  saltglass::char::elara
+
+### 4. Recall Elara AFTER (canon now: dead — the 'alive' fact no longer surfaces) ###
+continuity recall: This operation was aborted
+### 4. Recall Elara AFTER supersede (canon now: dead — 'alive' no longer surfaces) ###
+recall ns=saltglass::char::elara q="Is Elara alive or dead?" → 2 hit(s)
+  [0.382] [canon:char] Elara — dead; drowned in the Fold on her final dive to recover Kane's name (as of: Ch.7)   (O0-scOKzoHLjq_LM8-aOhYCa82m_HCFLBGb2rKSm-t4)
+  [0.476] [canon:char] Elara — grey eyes; her saltglass pendant passed to Kane after her death (as of: Ch.7)   (3WsvVdncLxVWlrgBXxdSEhETeI2byL4TnIGIlrb7sq4)
+
+### 5. The pendant passes to Kane. SUPERSEDE ###
+↻ superseded object "Elara's pendant": retired 1 old fact(s), wrote 1 current fact(s)
+  saltglass::object::elaras-pendant
+
+### 6. Export the current story bible ###
+# Story bible — saltglass
+
+## saltglass::char::elara
+- [canon:char] Elara — grey eyes; her saltglass pendant passed to Kane after her death (as of: Ch.7)
+- [canon:char] Elara — dead; drowned in the Fold on her final dive to recover Kane's name (as of: Ch.7)
+
+## saltglass::char::kane
+- [canon:char] Kane — harbor-warden of Ravengard and Elara's brother; forbids diving the Fold (as of: Ch.1)
+- [canon:char] Kane — wields the Sunblade, a relic that burns even underwater (as of: Ch.2)
+
+## saltglass::char::mother-vess
+- [canon:char] Mother Vess — blind keeper of the saltglass archive; reads stored memories by touch (as of: Ch.2)
+
+## saltglass::place::ravengard
+- [canon:place] Ravengard — the half-drowned city whose memories are kept in saltglass towers (as of: Ch.1)
+
+## saltglass::place::the-fold
+- [canon:place] the Fold — a rift in the sea floor beyond Ravengard where lost memories collect (as of: Ch.1)
+
+## saltglass::object::the-sunblade
+- [canon:object] the Sunblade — a relic sword that burns underwater; carried by Kane; intact (as of: Ch.2)
+
+## saltglass::object::elaras-pendant
+- [canon:object] Elara's pendant — saltglass holding her mother's last memory; now worn by Kane (as of: Ch.7)
+
+## saltglass::rule::cost-of-the-fold
+- [canon:rule] Cost of the Fold — each dive into the Fold costs the diver one memory they can never recover (as of: Ch.1)
+
+## saltglass::events
+- [canon:event] Ch.1 — Elara dives the Fold against Kane's warning and loses the memory of her mother's face
+- [canon:event] Ch.7 — Elara makes a final dive into the Fold to recover Kane's stolen name and does not surface
+- [canon:event] Ch.3 — Kane raises the Sunblade to hold back the Grey Tide at the harbor mouth
+
+## saltglass::timeline
+- [canon:timeline] Saltglass order — Ch.1 Elara's first dive → Ch.3 Sunblade at the harbor → Ch.7 Elara's final dive
+
+
+### 7. Proof summary ###
+19 write(s) logged, 19 unique blob_id(s)
+accountId: 0x8dd9d47183f88a1ab70515bed7494685487458614131e2004f7d18f1d3b9c9d7
