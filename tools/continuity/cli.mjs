@@ -15,6 +15,7 @@ import { MemWal } from "@mysten-incubation/memwal";
 import { readFileSync, writeFileSync, appendFileSync, mkdirSync, existsSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
+import { nsFor as nsForLib, parseFacts, isTransient, blobIdOf } from "./lib.mjs";
 
 const DEFAULT_SERVER = "https://relayer.memory.walrus.xyz";
 const STATE_DIR = join(process.cwd(), ".continuity");
@@ -63,14 +64,7 @@ function client() {
   return MemWal.create({ key: c.key, accountId: c.accountId, serverUrl: c.serverUrl, namespace: "default" });
 }
 
-// ── retry with backoff + jitter (transient errors only) ──────────
-const TRANSIENT = /timeout|abort|socket hang up|fetch failed|rate ?limit|ECONNRESET|ETIMEDOUT|ECONNREFUSED|EAI_AGAIN|EPIPE|502|503|504|gateway|relayer/i;
-function isTransient(e) {
-  const s = e?.status;
-  if (s && (s === 408 || s === 429 || s >= 500)) return true;
-  if (s && s >= 400 && s < 500) return false; // auth / bad request — do not retry
-  return TRANSIENT.test(String(e?.message || e));
-}
+// ── retry with backoff + jitter (transient errors only; isTransient in lib.mjs) ──
 async function withRetry(fn, { tries = 4, base = 500 } = {}) {
   let last;
   for (let i = 0; i < tries; i++) {
@@ -98,17 +92,9 @@ function registerNs(story, ns, meta) {
   saveRegistry(r);
 }
 
-// ── namespace helpers ────────────────────────────────────────────
-const slug = (s) => String(s).toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
-const ENTITY_TYPES = new Set(["char", "place", "object", "rule", "term"]);
-function nsFor({ story, type, entity }) {
-  if (!story) die("missing --story");
-  if (!type) die("missing --type");
-  if (ENTITY_TYPES.has(type)) {
-    if (!entity) die(`--type ${type} needs --entity`);
-    return `${story}::${type}::${slug(entity)}`;
-  }
-  return `${story}::${type}`; // accretive: events | timeline | relationships
+// ── namespace helpers (pure logic in lib.mjs; wrap to exit cleanly on bad args) ──
+function nsFor(a) {
+  try { return nsForLib(a); } catch (e) { die(e.message); }
 }
 
 // ── forget (the primitive MCP/SDK doesn't expose) ────────────────
@@ -122,20 +108,9 @@ async function forgetNamespace(m, namespace) {
   );
 }
 
-// ── result shape helpers (SDK return shapes vary) ────────────────
-const blobIdOf = (x) => x?.blob_id || x?.blobId || x?.id;
+// ── facts-file / --fact parsing (parseFacts + blobIdOf in lib.mjs) ──
 function factsFromArg(a) {
-  // --facts-file <json array | newline-delimited> OR repeated --fact
-  if (a["facts-file"]) {
-    const raw = readFileSync(a["facts-file"], "utf8").trim();
-    // Prefer a JSON array; fall back to newline-delimited lines. (Canon facts
-    // begin with "[canon:...]", so a leading "[" is NOT a reliable JSON signal.)
-    try {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) return parsed.map((x) => (typeof x === "string" ? x : x.text));
-    } catch { /* not JSON — treat as lines */ }
-    return raw.split("\n").map((s) => s.trim()).filter(Boolean);
-  }
+  if (a["facts-file"]) return parseFacts(readFileSync(a["facts-file"], "utf8"));
   if (a.fact) return Array.isArray(a.fact) ? a.fact : [a.fact];
   return [];
 }

@@ -41,7 +41,7 @@ See [`docs/proof/mainnet-proof.md`](proof/mainnet-proof.md) (raw log: [`proof/ma
 Storyboard: [`docs/demo-script.md`](demo-script.md). Upload the recording to Walrus and paste the link here: `‹walrus blob url›`
 
 ## Public link
-Repository: `‹github url — filled on push›`
+Repository: https://github.com/yukitran03/continuity-keeper
 
 ## Registration
 Submit at https://walform.wal.app/f?formId=0x308876d0ae9c09d3e805580ac89ea8bd6a3eec7f5535969b267bde80ef3049d4
