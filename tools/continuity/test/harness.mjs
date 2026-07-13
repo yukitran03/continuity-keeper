@@ -1,6 +1,6 @@
 // Offline unit tests for the pure logic in lib.mjs. No network, no credentials.
 import assert from "node:assert/strict";
-import { slug, nsFor, classifyDistance, parseFacts, isTransient, blobIdOf } from "../lib.mjs";
+import { slug, nsFor, classifyDistance, parseFacts, isTransient, blobIdOf, walruscan } from "../lib.mjs";
 
 let n = 0;
 const t = (name, fn) => { fn(); n++; console.log(`  ✓ ${name}`); };
@@ -55,6 +55,10 @@ t("isTransient retries 5xx/timeouts/abort, not 4xx", () => {
 t("blobIdOf reads varied SDK result shapes", () => {
   assert.equal(blobIdOf({ blob_id: "x" }), "x");
   assert.equal(blobIdOf({ blobId: "y" }), "y");
+});
+
+t("walruscan builds a mainnet blob url", () => {
+  assert.equal(walruscan("abc"), "https://walruscan.com/mainnet/blob/abc");
 });
 
 console.log(`\n${n} checks passed`);

@@ -15,7 +15,7 @@ import { MemWal } from "@mysten-incubation/memwal";
 import { readFileSync, writeFileSync, appendFileSync, mkdirSync, existsSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { nsFor as nsForLib, parseFacts, isTransient, blobIdOf } from "./lib.mjs";
+import { nsFor as nsForLib, parseFacts, isTransient, blobIdOf, walruscan } from "./lib.mjs";
 
 const DEFAULT_SERVER = "https://relayer.memory.walrus.xyz";
 const STATE_DIR = join(process.cwd(), ".continuity");
@@ -130,7 +130,7 @@ const commands = {
     const results = res.results || res || [];
     if (isJson(a)) return console.log(JSON.stringify(res));
     console.log(`recall ns=${namespace} q="${query}" → ${results.length} hit(s)`);
-    for (const r of results) console.log(`  [${(r.distance ?? 0).toFixed(3)}] ${r.text}   (${blobIdOf(r)})`);
+    for (const r of results) console.log(`  [${(r.distance ?? 0).toFixed(3)}] ${r.text}\n        ↳ ${walruscan(blobIdOf(r))}`);
   },
 
   async remember(a) {
@@ -141,7 +141,7 @@ const commands = {
     const blob_id = blobIdOf(res);
     ledger({ op: "remember", blob_id, namespace, text });
     if (a.story) registerNs(a.story, namespace, { type: a.type, entity: a.entity });
-    console.log(isJson(a) ? JSON.stringify(res) : `✓ canon: ${text}\n  ${namespace}  ${blob_id}`);
+    console.log(isJson(a) ? JSON.stringify(res) : `✓ canon: ${text}\n  ${namespace}\n  ↳ ${walruscan(blob_id)}`);
   },
 
   async "remember-bulk"(a) {
@@ -181,15 +181,16 @@ const commands = {
     // 2) re-write the entity's current fact set (if provided).
     const facts = factsFromArg(a);
     let written = 0;
+    const urls = [];
     if (facts.length) {
       const res = await withRetry(() => m.rememberBulkAndWait(facts.map((text) => ({ text, namespace }))));
-      for (const r of (res.results || res || [])) ledger({ op: "supersede.write", blob_id: blobIdOf(r), namespace, text: r.text });
+      for (const r of (res.results || res || [])) { ledger({ op: "supersede.write", blob_id: blobIdOf(r), namespace, text: r.text }); urls.push(walruscan(blobIdOf(r))); }
       written = facts.length;
       registerNs(story, namespace, { type, entity, facts: written });
     }
-    console.log(isJson(a)
-      ? JSON.stringify({ namespace, deleted: forgot.deleted, written })
-      : `↻ superseded ${type} "${entity}": retired ${forgot.deleted} old fact(s), wrote ${written} current fact(s)\n  ${namespace}`);
+    if (isJson(a)) return console.log(JSON.stringify({ namespace, deleted: forgot.deleted, written }));
+    console.log(`↻ superseded ${type} "${entity}": retired ${forgot.deleted} old fact(s), wrote ${written} current fact(s)\n  ${namespace}`);
+    for (const u of urls) console.log(`  ↳ ${u}`);
   },
 
   async export(a) {

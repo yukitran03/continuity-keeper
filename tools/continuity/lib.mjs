@@ -48,3 +48,5 @@ export function isTransient(e) {
 }
 
 export const blobIdOf = (x) => x?.blob_id || x?.blobId || x?.id;
+
+export const walruscan = (blobId) => `https://walruscan.com/mainnet/blob/${blobId}`;
