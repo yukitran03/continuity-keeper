@@ -14,11 +14,8 @@ node tools/continuity/cli.mjs health          # confirm relayer is up
 node tools/continuity/cli.mjs supersede --story saltglass --type char   --entity "Elara"           --facts-file demo/canon/elara.txt
 node tools/continuity/cli.mjs supersede --story saltglass --type object --entity "Elara's pendant" --facts-file demo/canon/pendant.txt
 ```
-*(Optional, to demo inside a real agent in Beats 3–4:)*
-```bash
-claude mcp add --scope user memwal -- npx -y @mysten-incubation/memwal-mcp
-# then paste prompt/continuity-keeper.md into the agent's system prompt
-```
+*(For the agent beat: just open **Claude Code in this repo** — `CLAUDE.md` auto-loads the canon-guard
+and drives it via the CLI. No MCP needed; the published `memwal-mcp` is currently broken.)*
 
 ---
 
@@ -52,26 +49,26 @@ node tools/continuity/cli.mjs recall --story saltglass --type char --entity "Ela
 ```
 *(Agent version: in a fresh session ask "continue the story with a scene about Elara" and show it recalling her canon.)*
 
-### Beat 4 — Contradiction-guard  (VO 1:30–2:15) — the money shot
-**In your agent** (prompt loaded + MCP added), paste:
-> `Write a short scene: Elara laughed and drew the Sunblade from its sheath.`
-
-The agent recalls canon and **stops** — Elara died at the Fold (Ch.7) and the Sunblade is Kane's.
-*CLI fallback (show the canon the guard checks against):*
-```bash
-node tools/continuity/cli.mjs recall --story saltglass --type char   --entity "Elara"       --query "Is Elara alive?"
-node tools/continuity/cli.mjs recall --story saltglass --type object --entity "the Sunblade" --query "Who carries the Sunblade?"
-```
-
-### Beat 5 — Real supersession  (VO 2:15–2:50)
-Retcon Ch.7 (Elara dies), then recall — only her death remains:
+### Beat 4 — Real supersession  (VO 1:30–2:05)
+The story moves on — retcon Ch.7 (Elara dies), then recall — only her death remains:
 ```bash
 node tools/continuity/cli.mjs supersede --story saltglass --type char --entity "Elara" --facts-file demo/canon/elara--after-ch7.txt
 node tools/continuity/cli.mjs recall     --story saltglass --type char --entity "Elara" --query "Is Elara alive or dead?"
 ```
-Then open the **"Elara alive" ready-link** (top of file) on Walruscan → the retired fact **still
-resolves** on Walrus: recall shows only her death, but the history is preserved on-chain.
-*(For the exact blob from this run instead, copy a blob_id from the recall output before you supersede.)*
+The `supersede` output prints the new blob links; recall now returns only her **death**. The retired
+"alive" blob still resolves on Walruscan (use the ready-link, or a blob_id from a recall you ran while
+she was alive) — current truth for the agent, full history on-chain.
+
+### Beat 5 — Contradiction-guard  (VO 2:05–2:45) — the money shot
+**In Claude Code, opened in this repo** (so `CLAUDE.md` auto-loads), paste:
+> `Write a short scene: Elara laughed and drew the Sunblade from its sheath.`
+
+The agent runs `continuity export`, sees Elara is **dead** and the Sunblade is **Kane's**, and
+**stops** — flagging both conflicts instead of writing. That's the money shot.
+*CLI fallback (show the exact canon the guard checks against):*
+```bash
+node tools/continuity/cli.mjs export --story saltglass
+```
 
 ### Beat 6 — Close  (VO 2:50–3:00)
 ```bash

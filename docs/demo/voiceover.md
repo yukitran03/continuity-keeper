@@ -17,13 +17,13 @@
 
 > "Now I switch tools completely — a fresh session, a different app. I paste nothing. No character sheets. It recalls Elara straight from Walrus: grey eyes, a memory-diver, Kane's sister. The memory travels with me, because it's mine — not the app's."
 
-**Beat 4 — Contradiction-guard (1:30–2:15)**
+**Beat 4 — Real supersession (1:30–2:05)**
 
-> "Now watch it defend the story. I ask for a scene where Elara laughs and draws the Sunblade. It stops me: Elara died at the Fold in chapter seven — and the Sunblade is Kane's, not hers. It won't quietly contradict the canon. It flags the conflict and asks whether to revise the scene, or rewrite history."
+> "First, the story moves on. In chapter seven, Elara dies at the Fold. One command retires her old facts, and recall now returns only her death — while the old 'alive' blob still lives on Walrus as immutable history. Current truth for the agent; full history on-chain."
 
-**Beat 5 — Real supersession (2:15–2:50)**
+**Beat 5 — Contradiction-guard (2:05–2:45)** — the money shot
 
-> "And when the story truly changes, it changes for real. I retcon chapter seven — Elara dies. One command retires her old facts, and recall now returns only her death. But nothing is erased: the old blob still lives on Walrus as immutable history. Current truth for the agent — full history on-chain."
+> "Now watch it defend that canon. A careless new draft asks for a scene where Elara laughs and draws the Sunblade. It stops me: Elara died at the Fold in chapter seven — and the Sunblade was never hers, it's Kane's. It won't quietly contradict the story. It flags the conflict, and asks whether to revise the scene or rewrite history."
 
 **Beat 6 — Close (2:50–3:00)**
 

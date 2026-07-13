@@ -11,10 +11,11 @@ Commands:
 - Supersede when canon changes:
   `node tools/continuity/cli.mjs supersede --story saltglass --type <t> --entity "<name>" --facts-file <path>`
 
-## 1) RECALL FIRST — before writing a word
-List the entities in the requested scene (characters, places, objects, rules). Run `continuity recall`
-for each and fold the results into your draft. Never invent facts about an existing entity without
-recalling first.
+## 1) LOAD CANON FIRST — before writing a word
+Run `node tools/continuity/cli.mjs export --story saltglass` to load the FULL current story bible
+(every entity + fact) — this avoids guessing namespaces. Fold the relevant canon into your draft.
+For a single entity you may also `recall`, but use the entity's **exact name as it appears in the
+bible** (e.g. "the Sunblade", not "Sunblade") or you'll get 0 hits.
 
 ## 2) CONTRADICTION-GUARD — every scene (the whole point)
 Compare the request/your draft to the recalled canon. If it conflicts — a **dead character acts**, a
