@@ -22,12 +22,28 @@ claude mcp add --scope user memwal -- npx -y @mysten-incubation/memwal-mcp
 
 ---
 
+### Beat 1 — Hook  (VO 0:00–0:20)
+**No command.** On screen: a title card ("Continuity Keeper") or the repo README hero.
+*Optional stronger open* — dramatize the problem in a **memoryless** AI: in a plain ChatGPT/agent
+(no prompt, no MemWal), type "continue a story where Elara died last chapter"; it writes her alive
+again. That failure is exactly what the rest of the video fixes.
+
+### 🔗 Ready Walruscan links (permanent — use whenever the VO says "on-chain / on Walrus")
+- **Elara "alive" — retired from recall, still on Walrus (history):** https://walruscan.com/mainnet/blob/lU97Xfm5sdW5xvfC1CLXjJd06jRQGC1eQUaf5AGsxiM
+- **Elara "dead" — current canon:** https://walruscan.com/mainnet/blob/O0-scOKzoHLjq_LM8-aOhYCa82m_HCFLBGb2rKSm-t4
+- **the Sunblade — Kane's:** https://walruscan.com/mainnet/blob/fyLDPNROg1Z55dz-xkwDT1aNQKCZQ2Uuq_dwLgf0geo
+
+> If a link opens blank, paste the blob_id into the search box on `walruscan.com` — same result.
+> Full list in [`docs/proof/mainnet-proof.md`](../proof/mainnet-proof.md).
+
+---
+
 ### Beat 2 — Capture canon  (VO 0:20–0:55)
 Show the story bible that's on Walrus, then one blob on-chain.
 ```bash
 node tools/continuity/cli.mjs export --story saltglass
 ```
-Then open a blob in the browser: `https://walruscan.com/mainnet/blob/<any blob_id from docs/proof/mainnet-proof.md>`
+Then open the **Sunblade** ready-link above in the browser → shows a real encrypted blob on Walrus mainnet.
 
 ### Beat 3 — Portability  (VO 0:55–1:30)
 Open a **new terminal window** (sell it as "a different tool / session"). Recall Elara with nothing pasted:
@@ -53,14 +69,16 @@ Retcon Ch.7 (Elara dies), then recall — only her death remains:
 node tools/continuity/cli.mjs supersede --story saltglass --type char --entity "Elara" --facts-file demo/canon/elara--after-ch7.txt
 node tools/continuity/cli.mjs recall     --story saltglass --type char --entity "Elara" --query "Is Elara alive or dead?"
 ```
-Then open the **retired** "alive" blob on Walruscan to show it *still resolves* — history preserved:
-`https://walruscan.com/mainnet/blob/lU97Xfm5sdW5xvfC1CLXjJd06jRQGC1eQUaf5AGsxiM`
+Then open the **"Elara alive" ready-link** (top of file) on Walruscan → the retired fact **still
+resolves** on Walrus: recall shows only her death, but the history is preserved on-chain.
+*(For the exact blob from this run instead, copy a blob_id from the recall output before you supersede.)*
 
 ### Beat 6 — Close  (VO 2:50–3:00)
 ```bash
 node tools/continuity/cli.mjs count
 ```
-Show the account ID + blob count, then cut to the repo: `github.com/yukitran03/continuity-keeper`.
+Flash the "Elara alive" Walruscan blob one last time (history preserved), show the **account ID +
+blob count**, then cut to the repo: `github.com/yukitran03/continuity-keeper`.
 
 ---
 
