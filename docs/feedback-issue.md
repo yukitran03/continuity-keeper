@@ -1,5 +1,7 @@
 # Feedback issue for MystenLabs/MemWal (Bug & Improvement bounty)
 
+> **Filed:** [#444](https://github.com/MystenLabs/MemWal/issues/444) — per-blob forget · [#445](https://github.com/MystenLabs/MemWal/issues/445) — `memwal-mcp` uninstallable
+
 **Title:** Expose per-blob `forget` — today the only public delete is namespace-level, forcing forget+rewrite to retire one memory
 
 **Body:**
