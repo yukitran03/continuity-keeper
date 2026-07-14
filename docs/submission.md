@@ -48,3 +48,7 @@ Repository: https://github.com/yukitran03/continuity-keeper
 ## Registration
 Submit at https://walform.wal.app/f?formId=0x308876d0ae9c09d3e805580ac89ea8bd6a3eec7f5535969b267bde80ef3049d4
 (Referrer Discord handle, if any: `‹…›`)
+
+## Submitted
+- On-chain submission (walform) tx: https://suivision.xyz/txblock/8WGSdpAiZUgnHYmFWNtGXF4yqMbpBtUo6M13qKbBM6MA
+- DeepSurge project: https://www.deepsurge.xyz/projects/7d2e4186-d64f-4199-8944-7b3d0b0a6c20
