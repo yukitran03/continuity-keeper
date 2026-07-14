@@ -9,7 +9,7 @@
 It keeps an AI co-writer consistent with your story's canon — and when the story genuinely
 changes, it _truly retires_ the old fact so it never contradicts you again.
 
-**[▶ Demo video](https://youtu.be/2AdYwwUwucY)** · **[Pitch deck](docs/deck/Continuity-Keeper-Pitch-Deck.pdf)**
+**[▶ Demo video](https://youtu.be/2AdYwwUwucY)** · **[Pitch deck](docs/deck/Continuity-Keeper-Pitch-Deck.pdf)** · **[DeepSurge](https://www.deepsurge.xyz/projects/7d2e4186-d64f-4199-8944-7b3d0b0a6c20)** · **[Submission tx](https://suivision.xyz/txblock/8WGSdpAiZUgnHYmFWNtGXF4yqMbpBtUo6M13qKbBM6MA)**
 
 `Walrus Mainnet` · account `0x8dd9…c9d7` · **41 blobs** · **2 supersessions** · [proof ↓](#proof-on-walrus-mainnet)
 
