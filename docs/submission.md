@@ -31,14 +31,16 @@ Continuity Keeper is a memory *policy*, not a "please remember" line:
 ## Proof that the prompt works
 See [`docs/proof/mainnet-proof.md`](proof/mainnet-proof.md) (raw log: [`proof/mainnet-proof-run.txt`](proof/mainnet-proof-run.txt)).
 
-- **Agent ID (MemWal account):** `0x8dd9d47183f88a1ab70515bed7494685487458614131e2004f7d18f1d3b9c9d7`
-- **Blobs on Walrus Mainnet:** **19** (18 canon facts from an original story + 1 smoke test)
+- **MemWal account:** `0x8dd9d47183f88a1ab70515bed7494685487458614131e2004f7d18f1d3b9c9d7`
+- **Delegate public key (agent id):** `dbac0ba8cdd85fb0c53e8b6e39bee230914ea19105d77ca169fe14385b68037d`
+- **MemWal package id:** `0xcee7a6fd8de52ce645c38332bde23d4a30fd9426bc4681409733dd50958a24c6`
+- **Blobs on Walrus Mainnet:** **41** (across the demo runs; the reproducible run in `docs/proof/` writes 19)
 - **Supersessions demonstrated:** 2 — after killing the protagonist, recall returns only her death;
   the retired "alive" blob is still resolvable on Walrus.
 - **Reproduce:** `bash demo/run-proof.sh`
 
 ## Demo video (<3 min)
-Storyboard: [`docs/demo-script.md`](demo-script.md). Upload the recording to Walrus and paste the link here: `‹walrus blob url›`
+▶ https://youtu.be/2AdYwwUwucY
 
 ## Public link
 Repository: https://github.com/yukitran03/continuity-keeper

@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/continuity-keeper-logo.png" alt="Continuity Keeper" width="220" />
+
 # Continuity Keeper
 
 **A self-enforcing, portable, wallet-owned _story bible_ on Walrus Memory.**
@@ -7,7 +9,9 @@
 It keeps an AI co-writer consistent with your story's canon — and when the story genuinely
 changes, it _truly retires_ the old fact so it never contradicts you again.
 
-`Walrus Mainnet` · account `0x8dd9…c9d7` · **19 blobs** · **2 supersessions** · [proof ↓](#proof-on-walrus-mainnet)
+**[▶ Demo video](https://youtu.be/2AdYwwUwucY)** · **[Pitch deck](docs/deck/Continuity-Keeper-Pitch-Deck.pdf)**
+
+`Walrus Mainnet` · account `0x8dd9…c9d7` · **41 blobs** · **2 supersessions** · [proof ↓](#proof-on-walrus-mainnet)
 
 </div>
 
@@ -147,7 +151,7 @@ node tools/continuity/cli.mjs help
 Run against the **production relayer** — full evidence in [`docs/proof/mainnet-proof.md`](docs/proof/mainnet-proof.md).
 
 - **Agent ID:** `0x8dd9d47183f88a1ab70515bed7494685487458614131e2004f7d18f1d3b9c9d7`
-- **19 blobs** on mainnet (18 canon facts from an original story + 1 smoke test); **2 supersessions**.
+- **41 blobs** on mainnet across the demo runs (the reproducible run writes 19); **2 supersessions**.
 - **Reproduce:** `bash demo/run-proof.sh`
 
 The run establishes the canon of an original short story (**Saltglass**, in [`demo/`](demo/)),
